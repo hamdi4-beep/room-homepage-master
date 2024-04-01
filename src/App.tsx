@@ -1,3 +1,5 @@
+import './css/input.css'
+
 function App() {
   return (
     <div>
