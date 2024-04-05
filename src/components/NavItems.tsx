@@ -1,25 +1,18 @@
-import * as React from 'react'
-
 import hamburgerIcon from '../assets/images/icon-hamburger.svg'
-import closeIcon from '../assets/images/icon-close.svg'
+// import closeIcon from '../assets/images/icon-close.svg'
 
 function NavItems() {
-    const [isHidden, setIsHidden] = React.useState(true)
-
     return (
-        <nav className='absolute w-full'>
-            <div className="flex space-between px-6 py-8">
-                <img
-                    onClick={() => setIsHidden(false)}
-                    src={hamburgerIcon}
-                    alt="hamburger menu icon for mobile"
-                />
+        <nav className='absolute p-12 text-primary-white flex gap-12 items-center w-full'>
+            <img
+                src={hamburgerIcon}
+                className='block md:hidden'
+                alt="hamburger menu icon for mobile"
+            />
 
-                <h1 className='text-primary-white text-3xl mx-auto'>room</h1>
-            </div>
+            <h2 className='text-xl font-semibold mx-auto md:mx-0'>room</h2>
 
-            <ul className={`${isHidden ? 'hidden' : ''} flex items-center gap-6 justify-between px-5 absolute bg-white text-black inset-0 font-bold`}>
-                <img onClick={() => setIsHidden(true)} src={closeIcon} alt="" />
+            <ul className='hidden md:flex gap-8'>
                 <li>home</li>
                 <li>shop</li>
                 <li>about</li>
