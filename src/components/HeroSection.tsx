@@ -1,38 +1,50 @@
-import mobileImageHero from '../assets/images/mobile-image-hero-1.jpg'
-import desktopImageHero from '../assets/images/desktop-image-hero-1.jpg'
+import * as React from 'react'
 import arrowIcon from '../assets/images/icon-arrow.svg'
 
 import SliderControl from './SliderControl'
+import { slides } from '../data/slides'
 
 import NavItems from './NavItems'
-import ResponsiveImage from './subcomponents/AdaptiveImage'
+import AdaptiveImages from './subcomponents/AdaptiveImages'
 
 function HeroSection() {
-    const images = {
-        mobile: mobileImageHero,
-        desktop: desktopImageHero
+    const [slideIndex, setSlideIndex] = React.useState(0)
+
+    const currSlide = slides[slideIndex]
+    const currIndex = slides.indexOf(currSlide)
+
+    const handleNextClick = () => {
+        if (slideIndex < slides.length - 1) {
+            setSlideIndex(slideIndex + 1)
+        }
+    }
+
+    const handlePrevClick = () => {
+        if (slideIndex > 0) {
+            setSlideIndex(slideIndex - 1)
+        }
     }
 
     return (
         <header className='md:flex'>
-            <div>
+            <div className='left-col'>
                 <NavItems />
-                <ResponsiveImage images={images} />
+                <AdaptiveImages currIndex={currIndex} />
             </div>
 
-            <div className="relative md:p-20 p-12 basis-1/2">
-                <h2 className="md:text-5xl text-3xl font-bold ">Discover innovative ways to decorate</h2>
-
-                <div className="py-4">
-                    <p className='text-primary-dark-gray'>We provide unmatched quality, comfort, and style for property owners across the country. Our experts combine form and function in bringing your vision to life. Create a room in your own style with our collection and make your property a reflection of you and what you love.</p>
-                </div>
+            <div className="relative md:p-20 p-8 py-12 basis-1/2">
+                <h2 className="md:text-5xl text-3xl font-bold ">{currSlide.title}</h2>
+                <p className='text-primary-dark-gray py-4'>{currSlide.content}</p>
             
                 <button className="uppercase tracking-[1em] font-semibold flex gap-4 items-center">
                     Shop now
                     <img src={arrowIcon} alt="" />
                 </button>
 
-                <SliderControl />
+                <SliderControl
+                    nextSlideClick={handleNextClick}
+                    prevSlideClick={handlePrevClick}
+                />
             </div>
         </header>
     )

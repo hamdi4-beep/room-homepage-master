@@ -13,7 +13,7 @@ function PageContainer() {
               <Img src={imageAboutDark} alt="" />
             
               <div className="p-8 py-12 md:p-12 md:py-14">
-                <h2 className="uppercase tracking-[.5em] font-bold mb-2">About our furniture</h2>
+                <h2 className="uppercase tracking-[.3em] font-bold mb-2">About our furniture</h2>
                 <p className="text-primary-dark-gray">Our multifunctional collection blends design and function to suit your individual taste.
                 Make each room unique, or pick a cohesive theme that best express your interests and what
                 inspires you. Find the furniture pieces you need, from traditional to contemporary styles
