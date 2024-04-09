@@ -1,5 +1,5 @@
 import HeroSection from "./HeroSection"
-import Img from "./subcomponents/Image"
+import Img from "./Image"
 
 import imageAboutDark from '../assets/images/image-about-dark.jpg'
 import imageAboutLight from '../assets/images/image-about-light.jpg'

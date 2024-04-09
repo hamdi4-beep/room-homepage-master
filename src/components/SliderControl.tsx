@@ -1,22 +1,38 @@
+import React from 'react'
 import leftArrowIcon from '../assets/images/icon-angle-left.svg'
 import rightArrowIcon from '../assets/images/icon-angle-right.svg'
 
-function SliderControl({
-    nextSlideClick,
-    prevSlideClick
-}: {
-    nextSlideClick: () => void
-    prevSlideClick: () => void
-}) {
-    return (
-        <div className='flex absolute bottom-0 left-0 cursor-pointer'>
-            <div onClick={prevSlideClick} className='bg-primary-black p-6 hover:opacity-80'>
-                <img className='' src={leftArrowIcon} alt="" />
-            </div>
+import {slides} from '../data/slides'
+import SlideArrow from './SlideArrow'
 
-            <div onClick={nextSlideClick} className='bg-primary-black p-6 hover:opacity-80'>
-                <img className='' src={rightArrowIcon} alt="" />
-            </div>
+function SliderControl({
+    updateSlide,
+    slideIndex
+}: {
+    updateSlide: React.Dispatch<React.SetStateAction<number>>
+    slideIndex: number
+}) {
+    const handleNextClick = () => {
+        if (slideIndex < slides.length - 1) {
+            updateSlide(slideIndex + 1)
+        }
+    }
+
+    const handlePrevClick = () => {
+        if (slideIndex > 0) {
+            updateSlide(slideIndex - 1)
+        }
+    }
+
+    return (
+        <div className='absolute left-0 bottom-0 w-full'>
+            <SlideArrow handleClick={handlePrevClick}>
+                <img src={leftArrowIcon} alt='arrow left' />
+            </SlideArrow>
+
+            <SlideArrow handleClick={handleNextClick}>
+                <img src={rightArrowIcon} alt='arrow right' />
+            </SlideArrow>
         </div>
     )
 }
